@@ -29,7 +29,7 @@
                 <font-awesome-icon icon="calendar"/>
             </li>
             <li class="nav__item">
-                <font-awesome-icon icon="map-marked-alt"/>
+                <font-awesome-icon icon="map-marker"/>
             </li>
         </ul>
     </div>

@@ -18,7 +18,7 @@ import Section5 from './main/Section-5';
 import Section6 from './main/Section-6';
 export default {
     name: "Main",
-    components: {Section1, Section2,Section3, Section4, Section5, Section6}
+    components: {Section1, Section2, Section3, Section4, Section5, Section6}
 }
 </script>
 

@@ -1,21 +1,24 @@
 <template>
-  <div id="app">
-      <Header></Header>
-      <router-view></router-view>
-  </div>
+<div id="app">
+    <Header></Header>
+    <router-view></router-view>
+    <Footer></Footer>
+</div>
 </template>
 
 <script>
 import Header from "./components/Header";
+import Footer from './components/Footer';
+
 export default {
     name: "app",
     data() {
     return {
-      msg: "Welcome to Your Vue.js App"
+        msg: "Welcome to Your Vue.js App"
     };
     },
     components : {
-      Header
+        Header, Footer
     }
 };
 </script>
@@ -25,9 +28,9 @@ export default {
 
 *, *::before, *::after
 {
-  margin : 0;
-  padding : 0;
-  box-sizing: border-box;
+    margin : 0;
+    padding : 0;
+    box-sizing: border-box;
 }
 
 html {

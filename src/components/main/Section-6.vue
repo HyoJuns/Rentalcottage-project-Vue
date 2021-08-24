@@ -7,7 +7,17 @@
             <p class="section__subheading">
                 {{ subTitle }}
             </p>
-
+            <div class="section__imageContainer">
+                <figure class="section__iamge">
+                    <img src="../../assets/near_travel_02.jpg" alt="Travel">
+                </figure>
+                <figure class="section__iamge">
+                    <img src="../../assets/near_travel_04.jpg" alt="Trave2">
+                </figure>
+                <figure class="section__iamge">
+                    <img src="../../assets/near_travel_06.jpg" alt="Trave3">
+                </figure>
+            </div>
         </div>
     </section>
 </template>
@@ -43,5 +53,32 @@ export default {
 {
     font-size: 2rem;
     letter-spacing: 8px;
+}
+.section__imageContainer
+{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-content: center;
+    margin-top: 8rem;
+    gap : 1rem;
+}
+.section__iamge
+{
+
+    width: 33%;
+}
+.section__wrap
+{
+    width: 1440px;
+    margin : 0 auto;
+}
+.section__iamge > img
+{
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: middle;
 }
 </style>
