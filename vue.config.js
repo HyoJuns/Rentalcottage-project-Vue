@@ -1,4 +1,4 @@
 module.exports = {
-    publicPath: "/Rentalcottage-project-Vue",
-    outputDir: "docs"
+    publicPath: "/Rentalcottage-project-Vue/",
+    outputDir: "./docs"
 };
