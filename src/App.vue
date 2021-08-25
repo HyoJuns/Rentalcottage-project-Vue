@@ -1,24 +1,25 @@
 <template>
-<div id="app">
-    <Header></Header>
-    <router-view></router-view>
-    <Footer></Footer>
-</div>
+    <div id="app">
+        <Header></Header>
+        <router-view></router-view>
+        <Footer></Footer>
+    </div>
 </template>
 
 <script>
-import Header from "./components/Header";
-import Footer from './components/Footer';
+import Header from "_component_/Header";
+import Footer from "_component_/Footer";
 
 export default {
     name: "app",
     data() {
-    return {
-        msg: "Welcome to Your Vue.js App"
-    };
+        return {
+            msg: "Welcome to Your Vue.js App"
+        };
     },
-    components : {
-        Header, Footer
+    components: {
+        Header,
+        Footer
     }
 };
 </script>
@@ -26,43 +27,41 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap");
 
-*, *::before, *::after
-{
-    margin : 0;
-    padding : 0;
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 html {
-  font-size: 62.5%;
+    font-size: 62.5%;
 }
 
 body {
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 16px;
-  font-weight: 300;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 16px;
+    font-weight: 300;
 
-  min-height: 100vh;
+    min-height: 100vh;
 
-  overflow-x: hidden;
-  scroll-behavior: smooth;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 
-  color : hsl(0, 0%, 100%);
+    color: hsl(0, 0%, 100%);
 }
 
-img
-{
-  vertical-align: middle;
+img {
+    vertical-align: middle;
 }
 
-li
-{
-  list-style-type: none;
+li {
+    list-style-type: none;
 }
 
-a
-{
-  font-size: inherit;
-  text-decoration: none;
+a {
+    font-size: inherit;
+    text-decoration: none;
 }
 </style>
