@@ -1,31 +1,49 @@
 <template>
     <div class="card">
-        <div class="card__side card__front">
+        <div class="card__side" v-show="fullscreen">
             <h3 class="card__title">
-                {{dataList.title}}
+                {{ dataList.title }}
             </h3>
             <p class="card__description">
-                {{dataList.desc}}
+                {{ dataList.desc }}
             </p>
-            <button class="card__open">
+            <button class="card__open" @click="cardView()">
+                <span class="filter"></span>
+                <span class="filter"></span>
+                <span class="filter"></span>
+                <span class="filter"></span>
                 자세히 보기
             </button>
         </div>
-        <div class="card__side card__back">
+        <!-- absoulte -->
+        <div class="card__pos" v-show="!fullscreen">
+            <h3 class="card__title">
+                {{ dataList.title }}
+            </h3>
+            <p class="card__description">
+                {{ dataList.desc }}
+            </p>
             <ul class="card__textList">
+                <li class="card__item">타입 : {{ dataList.type.type }}</li>
                 <li class="card__item">
-                    타입 : {{dataList.type.type}}
+                    성수기 : {{ dataList.type.price[0] }} 원
                 </li>
                 <li class="card__item">
-                    성수기 : {{dataList.type.price[0]}} 원
+                    비성수기 : {{ dataList.type.price[1] }} 원
                 </li>
                 <li class="card__item">
-                    비성수기 : {{dataList.type.price[1]}} 원
-                </li>
-                <li class="card__item">
-                    기준 / 최대 : {{dataList.type.minPeople}}/{{dataList.type.maxPeople}}
+                    기준 / 최대 : {{ dataList.type.minPeople }}/{{
+                        dataList.type.maxPeople
+                    }}
                 </li>
             </ul>
+            <button class="card__open" @click="cardView()">
+                자세히 보기
+                <span class="filter"></span>
+                <span class="filter"></span>
+                <span class="filter"></span>
+                <span class="filter"></span>
+            </button>
         </div>
     </div>
 </template>
@@ -33,105 +51,109 @@
 <script>
 export default {
     name: "CardModal",
-    props : ['dataList'],
-
-}
+    data() {
+        return {
+            fullscreen: false
+        };
+    },
+    props: ["dataList"],
+    methods: {
+        cardView: function() {
+            this.fullscreen = !this.fullscreen;
+        }
+    }
+};
 </script>
 
 <style scoped>
-.card
-{
-    width: 250px;
-    height: 260px;
-    /*outline: 1px solid red;*/
-    padding : 1rem;
+.card {
+    width: 400px;
+    height: 400px;
+    background-color: #444;
 
-    position: relative;
+    box-shadow: 2px 2px 2px 2px #222;
 
-    border-radius: 10px;
-
-    box-shadow: .1rem .1rem .1rem #1DC5E2, .2rem .2rem .2rem #1badc6;
-    transform: perspective(500px) rotateY(0);
-    transform-style: preserve-3d;
-
+    border-radius: 25px;
+    color: seashell;
 }
-.card__title
-{
-    font-size: 2.4rem;
+.card__title {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 3.2rem;
     font-weight: 700;
     letter-spacing: 5px;
-    padding-top: 1rem;
-    color : #ffffff;
 }
+.card__description {
+    font-size: 2.4rem;
+    letter-spacing: 1.5px;
+    padding-bottom: 0.5em;
+}
+.card__open {
+    background: transparent;
+    padding: 1em;
+    font-size: 2rem;
 
-.card__description
-{
-    font-size: 1.6rem;
-    font-weight: 500;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
-    color : #e2c12b;
-}
-.card__open
-{
-    margin-top: 4rem;
-    padding: 2.4rem 6rem;
-    font-size: 1.6rem;
-    font-weight: bold;
-    outline: none;
-    border: 1px solid #1DC5E2;
-    border-radius: 3rem;
-    background-color: transparent;
+    /* border: 2px solid hsl(11, 84%, 52%); */
+    border: none;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    color: white;
     cursor: pointer;
-    color : #1DC5E2;
-    opacity: 1;
-    transform: scale(1);
-    transition: all .5s ease;
 
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
-.card__open:hover
-{
-    opacity: .8;
-    transform: scale(0.98);
-}
+.filter {
+    display: block;
 
-.card__side
-{
-    position : absolute;
-    left : 0;
-    top : 0;
+    position: absolute;
     width: 100%;
+    height: 2px;
+}
+.filter:nth-child(1) {
+    left: 0;
+    top: 0;
+
+    background-color: #9ccc65;
+    animation: hue 6s ease-in-out infinite alternate;
+}
+.filter:nth-child(2) {
+    width: 2px;
     height: 100%;
-    border-radius: 10px;
-    backface-visibility: hidden;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+    right: 0;
+    top: 0;
 
-.card__front
-{
-    z-index: 2;
-    -webkit-transform: rotateY(0);
-    transform: rotateY(0);
-    border-radius: 1rem;
+    background-color: #ffab91;
+    animation: hue 6s 1s ease-in-out infinite alternate;
 }
+.filter:nth-child(3) {
+    left: 0;
+    bottom: 0;
 
-.card__back
-{
-    background-color: #444;
-    border-radius: 1rem;
-    -webkit-transform: rotateY(-180deg);
-    transform: rotateY(-180deg);
+    background-color: #ffa726;
+    animation: hue 6s 3s ease-in-out infinite alternate;
 }
+.filter:nth-child(4) {
+    width: 2px;
+    height: 100%;
+    left: 0;
+    top: 0;
 
-@keyframes reverse {
-    0%
-    {
-        transform: perspective(500px) rotateY(0deg);
+    background-color: #ffab91;
+    animation: hue 6s 5s ease-in-out infinite alternate;
+}
+.card__item {
+    font-size: 1.6rem;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+}
+@keyframes hue {
+    0% {
+        filter: hue-rotate(0deg);
     }
-    100%
-    {
-        transform: perspective(500px) rotateY(-180deg);
+    100% {
+        filter: hue-rotate(360deg);
     }
 }
 </style>
